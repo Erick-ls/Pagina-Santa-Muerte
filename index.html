@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Muerte</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="./images/libros.png">
+    <link rel="stylesheet" href="style.css">
+
+        
+</head>
+
+<body>
+
+    <!-- Fondo dinámico místico -->
+    <div class="dynamic-bg">
+        <div class="gradient-bg"></div>
+        <div class="constellation"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="mystic-fog"></div>
+        <div class="hidden-symbols">
+            <div class="symbol-bg">✡</div>
+        </div>
+    </div>
+
+    <!-- Pantalla de carga -->
+    <div class="loader-container" id="loader">
+        <div class="santa-muerte-logo">
+            <div class="logo-circle"></div>
+        </div>
+        <div class="loading-text">Cargando</div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+    </div>
+
+    <!-- Menú lateral -->
+    <div class="sidebar">
+        <div class="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#videos"><i class="fas fa-play-circle"></i> Videos</a></li>
+            <li><a href="#galeria"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="#servicios"><i class="fas fa-magic"></i> Servicios</a></li>
+            <li><a href="#testimonios"><i class="fas fa-comment"></i> Testimonios</a></li>
+            <li><a href="#amarres"><i class="fas fa-heart"></i> Guia Santa Muerte</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div id="main-content">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                Santa Muerte
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#amarres">Guia Santa Muerte</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>Devoción a la Santa Muerte</h1>
+                <p>La Santa Muerte es símbolo de fe, respeto y devoción para quienes buscan un camino espiritual más profundo. A través de
+                rituales y ofrendas, es posible establecer una conexión sagrada que brinda guía, protección y fortaleza en momentos de
+                necesidad. Su energía acompaña a quienes le rinden culto con sinceridad, ofreciendo apoyo en la vida diaria y claridad
+                en el camino que cada persona decide recorrer.</p>
+                <a href="#contacto" class="btn">Contactar por WhatsApp</a>
+            </div>
+        </section>
+
+        <!-- Sección de Videos -->
+        <section id="videos" class="videos-section">
+            <h2 class="section-title">Videos de Devoción</h2>
+            <div class="video-carousel">
+                <div class="video-container" id="video-carousel">
+                    <!-- VIDEO 1: Reemplaza la URL con tu video -->
+                    <div class="video-item">
+                        <div class="video-wrapper">
+                            <video autoplay loop muted playsinline poster="ruta/a/tu/imagen-de-portada.jpg">
+                                <source src="./videos/VID-20250825-WA0004.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <h3>Ritual de Ofrenda</h3>
+                            <p>Ceremonia de devoción a la Santa Muerte</p>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO 2: Reemplaza la URL con tu video -->
+                    <div class="video-item">
+                        <div class="video-wrapper">
+                            <video autoplay loop muted playsinline poster="ruta/a/tu/imagen-de-portada2.jpg">
+                                <source src="./videos/VID-20250825-WA0003.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <h3>Oración de Protección</h3>
+                            <p>Rezo poderoso para buscar amparo espiritual</p>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO 3: Reemplaza la URL con tu video -->
+                    <div class="video-item">
+                        <div class="video-wrapper">
+                            <video autoplay loop muted playsinline poster="./images/IMG-20250825-WA0009.jpg">
+                                <source src="./videos/VID-20250825-WA0002.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <h3>Altar Sagrado</h3>
+                            <p>Preparación de espacio devocional para la Santa Muerte</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería Principal -->
+        <section id="galeria" class="gallery-main">
+            <h2 class="section-title">Galería Devocional</h2>
+            <div class="masonry-grid">
+                <!-- IMAGEN 1: Reemplaza la URL con tu imagen -->
+                <div class="gallery-item">
+                    <img src="./images/IMG-20250825-WA0003.jpg" alt="Altar de Santa Muerte">
+                    <div class="gallery-caption">
+                        <h3>Altar de Santa Muerte</h3>
+                        <p>Espacio sagrado con ofrendas y elementos ceremoniales para honrar, agradecer y fortalecer tu vínculo espiritual.</p>
+                    </div>
+                </div>
+
+                <!-- IMAGEN 2: Reemplaza la URL con tu imagen -->
+                <div class="gallery-item">
+                    <img src="./images/IMG-20250825-WA0004.jpg" alt="Velas Rituales">
+                    <div class="gallery-caption">
+                        <h3>Velas Rituales</h3>
+                        <p>Iluminan tu camino espiritual, potenciando la energía de tus peticiones y creando un vínculo directo con lo divino.</p>
+                    </div>
+                </div>
+
+                <!-- IMAGEN 3: Reemplaza la URL con tu imagen -->
+                <div class="gallery-item">
+                    <img src="./images/IMG-20250825-WA0007.jpg" alt="Imágenes Sagradas">
+                    <div class="gallery-caption">
+                        <h3>Imágenes Sagradas</h3>
+                        <p>Representaciones devocionales que inspiran fe, fortalecen la conexión espiritual y acompañan tus momentos de oración.</p>
+                    </div>
+                </div>
+
+                <!-- IMAGEN 4: Reemplaza la URL con tu imagen -->
+                <div class="gallery-item">
+                    <img src="./images/IMG-20250825-WA0010.jpg" alt="Elementos Ceremoniales">
+                    <div class="gallery-caption">
+                        <h3>Elementos Ceremoniales</h3>
+                        <p>Descubre objetos consagrados que fortalecen tu fe, te brindan protección y te acompañan en cada paso de tu práctica
+                        espiritual.</p>
+                    </div>
+                </div>
+
+                <!-- IMAGEN 5: Reemplaza la URL con tu imagen -->
+                <div class="gallery-item">
+                    <img src="./images/IMG-20250825-WA0008.jpg" alt="Ofrendas">
+                    <div class="gallery-caption">
+                        <h3>Ofrendas</h3>
+                        <p>Presentes significativos para honrar a la Santa Muerte, fortalecer la conexión espiritual y expresar gratitud en tus
+                        rituales.</p>
+                    </div>
+                </div>
+
+                <!-- IMAGEN 6: Reemplaza la URL con tu imagen -->
+                <div class="gallery-item">
+                    <img src="./images/IMG-20250825-WA0005.jpg" alt="Símbolos de Protección">
+                    <div class="gallery-caption">
+                        <h3>Símbolos de Protección</h3>
+                        <p>Amuletos y talismanes sagrados que resguardan tu energía, atraen fuerza espiritual y te acompañan en todo momento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios -->
+        <section id="servicios" class="services">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <!-- SERVICIO 1: Reemplaza la URL con tu imagen -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="./images/descarga.jpg" alt="Consagraciones">
+                    </div>
+                    <div class="service-content">
+                        <h3>Rituales de Prosperidad</h3>
+                        <p class="descripcion1">Rituales especiales para fortalecer tu unión de pareja y, al mismo tiempo, abrir caminos hacia la riqueza y el éxito.</p>
+                        <a href="#" class="btn whatsapp-service-btn">Contactar por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- SERVICIO 2: Reemplaza la URL con tu imagen -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="./images/amarres.jpg" alt="Oraciones Personalizadas">
+                    </div>
+                    <div class="service-content">
+                        <h3>Amarres ❤️‍🔥</h3>
+                        <p class="descripcion2">Rituales especiales para asegurar fidelidad, estabilidad y conexión duradera.</p>
+                        <a href="#" class="btn whatsapp-service-btn">Contactar por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- SERVICIO 3: Reemplaza la URL con tu imagen -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="./images/Tolas.jpg" alt="Protección Espiritual">
+                    </div>
+                    <div class="service-content">
+                        <h3>Protección Espiritual</h3>
+                        <p class="descripcion3">Rituales de protección y limpieza energética diseñados para purificar tu hogar y tu ser, alejando energías negativas y
+                        atrayendo armonía, bienestar y resguardo espiritual.</p>
+                        <a href="#" class="btn whatsapp-service-btn">Contactar por WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Testimonios -->
+        <section id="testimonios" class="testimonials-section">
+            <h2 class="section-title">Testimonios de Clientes</h2>
+            <div class="testimonials-container">
+                <!-- Testimonio 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="./images/Imagen de WhatsApp 2025-09-20 a las 18.45.05_f88c023b.jpg"
+                            alt="Testimonio de María G.">
+                </div>
+            </div>
+
+                <!-- Testimonio 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="./images/Imagen de WhatsApp 2025-09-20 a las 18.45.04_7a226d2c.jpg"
+                            alt="Testimonio de Carlos R.">
+                </div>
+            </div>
+
+                <!-- Testimonio 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="./images/Imagen de WhatsApp 2025-09-16 a las 19.52.15_cafdb9b1.jpg"
+                            alt="Testimonio de Ana L." >
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Amarres -->
+        <section id="amarres" class="amarres-section">
+            <h2 class="section-title">Guía Santa Muerte</h2>
+            <div class="amarres-content">
+                <p>La Santa Muerte escucha a quienes acuden a Ella con fe y devoción.
+                Sus bendiciones brindan protección, justicia y fortaleza en los momentos más difíciles.
+                A través de rituales sagrados, honramos su poder para abrir caminos, alejar lo negativo y atraer paz, equilibrio y
+                prosperidad a la vida de quienes buscan su amparo.
+                Con su guía, todo obstáculo puede transformarse en oportunidad</p>
+                <a href="https://wa.link/buv7ho" class="whatsapp-btn-large" id="amarres-whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> ! ESCRIBEME HOY !
+                </a>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="contact-section">
+            <h2 class="section-title">Contacto</h2>
+            <div style="max-width: 600px; margin: 0 auto; text-align: center; padding: 2rem;">
+                <p class="textoWhatsapp">Da el primer paso hacia la bendición de la Santa Muerte.
+                Contáctame ahora por WhatsApp y recibe una atención exclusiva, directa y dedicada solo para ti.</p>
+                <p class="textoWhatsapp2">Estamos disponibles exclusivamente por WhatsApp para una atención personalizada y directa.</p>
+
+                <!-- Redes sociales -->
+                <a href="https://wa.link/buv7ho" class="whatsapp-btn-large" style="margin-top: 2rem;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <!-- WhatsApp Float -->
+        <a href="#" class="whatsapp-float" id="whatsapp-float">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+    <!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">Santa Muerte</div>
+
+        <div class="footer-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#videos">Videos</a>
+            <a href="#galeria">Galería</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#amarres">Guia Santa Muerte</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+
+        <div class="footer-quote">
+            "La Santísima Muerte protege a quienes la honran con fe y devoción"
+        </div>
+
+        <div class="social-links">
+            <a href="https://wa.link/buv7ho"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <p>&copy; 2025 Devoción a la Santa Muerte. Todos los derechos reservados.</p>
+    </div>
+</footer>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img id="lightbox-image" src="" alt="">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+</div>
+
+<!-- Modal de WhatsApp -->
+<div class="whatsapp-modal" id="whatsapp-modal">
+    <div class="modal-content">
+        <span class="modal-close" id="modal-close">&times;</span>
+
+        <h2 class="modal-title">
+            <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+        </h2>
+
+        <div class="modal-message">
+            <p>¡Bendiciones! Me interesa conectar con la energía de la Santísima Muerte. Quisiera más información
+                sobre:
+            </p>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li>Consagraciones y rituales</li>
+                <li>Oraciones personalizadas</li>
+                <li>Protección espiritual</li>
+                <li>Guia Santa Muerte</li>
+            </ul>
+            <p style="margin-top: 10px;">Agradezco su guidance en mi camino devocional.</p>
+        </div>
+
+        <div class="modal-buttons">
+            <a href="https://wa.link/buv7ho"  target="_blank" class="btn-whatsapp" id="whatsapp-send">
+                <i class="fab fa-whatsapp"></i> Abrir en WhatsApp
+            </a>
+            <button class="btn-cancel" id="modal-cancel">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<script src="./app.js"></script>
+</body>
+
+</html>
