@@ -1,7 +1,9 @@
-// Esperar a que el DOM esté completamente cargado
-    document.addEventListener('DOMContentLoaded', function () {
-            // Elementos del DOM
-            const loader = document.getElementById('loader');
+document.addEventListener('DOMContentLoaded', function () {
+
+    // =============================
+    // ELEMENTOS DEL DOM
+    // =============================
+    const loader = document.getElementById('loader');
     const progress = document.getElementById('progress');
     const mainContent = document.getElementById('main-content');
     const sidebarToggle = document.querySelector('.sidebar-toggle');
@@ -22,153 +24,238 @@
     const whatsappServiceBtns = document.querySelectorAll('.whatsapp-service-btn');
     const amarresWhatsappBtn = document.getElementById('amarres-whatsapp-btn');
 
-    // Variables para el carrusel
+    // =============================
+    // CARRUSEL
+    // =============================
     let currentVideoIndex = 0;
     const totalVideos = document.querySelectorAll('.video-item').length;
+    let activeVideo = null;
 
-    // Simular carga de la página
-    setTimeout(function () {
-        // Incrementar la barra de progreso
-        let width = 0;
-    const interval = setInterval(function () {
-                    if (width >= 100) {
-        clearInterval(interval);
-    // Ocultar loader y mostrar contenido
-    loader.classList.add('hidden');
-    mainContent.style.display = 'block';
-                    } else {
-        width += 5;
-    progress.style.width = width + '%';
-                    }
-                }, 50);
-            }, 950);
+    // Activar listener del video actual
+    function activateVideoListener() {
 
-    // Toggle del menú lateral
-    sidebarToggle.addEventListener('click', function () {
-        sidebar.classList.toggle('active');
-            });
+        const videos = document.querySelectorAll('.video-wrapper video');
+        if (videos.length === 0) return;
 
-    // Cerrar menú lateral al hacer clic fuera de él
-    document.addEventListener('click', function (event) {
-                if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target) && sidebar.classList.contains('active')) {
-        sidebar.classList.remove('active');
-                }
-            });
+        // Remover eventos anteriores
+        videos.forEach(video => {
+            video.removeEventListener('timeupdate', handleVideoTime);
+        });
 
-    // Navegación del carrusel de videos
+        activeVideo = videos[currentVideoIndex];
+        if (!activeVideo) return;
+
+        activeVideo.addEventListener('timeupdate', handleVideoTime);
+    }
+
+    // Cuando el video llegue a 60 segundos
+    function handleVideoTime() {
+
+        if (this.currentTime >= 60) {
+
+            this.currentTime = 0;
+
+            currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
+            updateCarousel();
+        }
+    }
+
     function updateCarousel() {
+
+        if (!videoCarousel || totalVideos === 0) return;
+
         videoCarousel.style.transform = `translateX(-${currentVideoIndex * 100}%)`;
+
+        const videos = document.querySelectorAll('.video-wrapper video');
+
+        videos.forEach((video, index) => {
+
+            // Reset sonido
+            video.muted = true;
+
+            const btn = video.closest('.video-wrapper')?.querySelector('.mute-btn');
+            if (btn) btn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+
+            if (index === currentVideoIndex) {
+                video.play();
+            } else {
+                video.pause();
+                video.currentTime = 0;
             }
-
-    prevBtn.addEventListener('click', function () {
-        currentVideoIndex = (currentVideoIndex - 1 + totalVideos) % totalVideos;
-    updateCarousel();
-            });
-
-    nextBtn.addEventListener('click', function () {
-        currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
-    updateCarousel();
-            });
-
-    // Auto-play del carrusel
-    setInterval(function () {
-        currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
-    updateCarousel();
-            }, 5000);
-
-    // Lightbox para la galería
-    galleryItems.forEach(function (item) {
-        item.addEventListener('click', function () {
-            const imgSrc = this.querySelector('img').src;
-            const caption = this.querySelector('.gallery-caption').innerHTML;
-
-            lightboxImage.src = imgSrc;
-            lightboxCaption.innerHTML = caption;
-            lightbox.classList.add('active');
         });
-            });
 
-    // Cerrar lightbox
-    lightboxClose.addEventListener('click', function () {
-        lightbox.classList.remove('active');
-            });
+        activateVideoListener();
+    }
 
-    // Abrir modal de WhatsApp
-    function openWhatsAppModal(e) {
-                if (e) e.preventDefault();
-    whatsappModal.classList.add('active');
-            }
+    if (prevBtn && nextBtn && totalVideos > 0) {
 
-    whatsappFloat.addEventListener('click', openWhatsAppModal);
+        prevBtn.addEventListener('click', function () {
+            currentVideoIndex = (currentVideoIndex - 1 + totalVideos) % totalVideos;
+            updateCarousel();
+        });
 
-            // Agregar event listeners a los botones de servicio
-            whatsappServiceBtns.forEach(btn => {
-        btn.addEventListener('click', openWhatsAppModal);
-            });
+        nextBtn.addEventListener('click', function () {
+            currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
+            updateCarousel();
+        });
 
-    // Agregar event listener al botón de amarres
-    amarresWhatsappBtn.addEventListener('click', openWhatsAppModal);
+        // Inicializar primer video
+        updateCarousel();
+    }
 
-    // Cerrar modal de WhatsApp
-    modalClose.addEventListener('click', function () {
-        whatsappModal.classList.remove('active');
-            });
+    // =============================
+    // MUTE / UNMUTE
+    // =============================
+    document.querySelectorAll('.mute-btn').forEach(button => {
+        button.addEventListener('click', function () {
 
-    modalCancel.addEventListener('click', function () {
-        whatsappModal.classList.remove('active');
-            });
+            const video = this.closest('.video-wrapper')?.querySelector('video');
+            if (!video) return;
 
-    // Enviar mensaje por WhatsApp
-    whatsappSend.addEventListener('click', function (e) {
-        e.preventDefault();
-    const phoneNumber = "3205057647"; // Reemplaza con tu número
-    const message = "¡Bendiciones! Me interesa conectar con la energía de la Santísima Muerte. Quisiera más información sobre consagraciones, oraciones personalizadas y protección espiritual. Agradezco su guidance en mi camino devocional.";
+            video.muted = !video.muted;
 
-        const whatsappUrl = `https://wa.link/buv7ho`;
-    window.open(whatsappUrl, '_blank');
-            });
+            this.innerHTML = video.muted
+                ? '<i class="fas fa-volume-mute"></i>'
+                : '<i class="fas fa-volume-up"></i>';
+        });
+    });
 
-            // Smooth scrolling para enlaces de navegación
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+    // =============================
+    // LOADER
+    // =============================
+    if (loader && progress && mainContent) {
+        setTimeout(function () {
 
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            let width = 0;
+            const interval = setInterval(function () {
 
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-
-                // Cerrar el menú lateral si está abierto
-                if (sidebar.classList.contains('active')) {
-                    sidebar.classList.remove('active');
+                if (width >= 100) {
+                    clearInterval(interval);
+                    loader.classList.add('hidden');
+                    mainContent.style.display = 'block';
+                } else {
+                    width += 5;
+                    progress.style.width = width + '%';
                 }
+
+            }, 50);
+
+        }, 950);
+    }
+
+    // =============================
+    // SIDEBAR
+    // =============================
+    if (sidebarToggle && sidebar) {
+
+        sidebarToggle.addEventListener('click', function () {
+            sidebar.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!sidebar.contains(event.target) &&
+                !sidebarToggle.contains(event.target) &&
+                sidebar.classList.contains('active')) {
+
+                sidebar.classList.remove('active');
             }
         });
+    }
+
+    // =============================
+    // LIGHTBOX
+    // =============================
+    if (galleryItems.length > 0 && lightbox) {
+
+        galleryItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+
+                const img = this.querySelector('img');
+                const caption = this.querySelector('.gallery-caption');
+
+                if (!img || !caption) return;
+
+                lightboxImage.src = img.src;
+                lightboxCaption.innerHTML = caption.innerHTML;
+                lightbox.classList.add('active');
             });
-
-    // Efecto parallax para el fondo
-    window.addEventListener('scroll', function () {
-                const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.gradient-bg, .constellation, .shape');
-
-    parallaxElements.forEach(function (el, index) {
-                    const speed = 0.5 * (index + 1) / 10;
-    el.style.transform = `translateY(${scrolled * speed}px)`;
-                });
-            });
-
-    // Efecto de escritura para el texto de carga
-    const loadingText = document.querySelector('.loading-text');
-    const originalText = loadingText.textContent;
-    let dots = 0;
-
-    setInterval(function () {
-        dots = (dots + 1) % 4;
-    loadingText.textContent = originalText + '.'.repeat(dots);
-            }, 500);
         });
+
+        lightboxClose?.addEventListener('click', function () {
+            lightbox.classList.remove('active');
+        });
+    }
+
+    // =============================
+    // WHATSAPP MODAL
+    // =============================
+    function openWhatsAppModal(e) {
+        if (e) e.preventDefault();
+        whatsappModal?.classList.add('active');
+    }
+
+    whatsappFloat?.addEventListener('click', openWhatsAppModal);
+    amarresWhatsappBtn?.addEventListener('click', openWhatsAppModal);
+
+    whatsappServiceBtns.forEach(btn => {
+        btn.addEventListener('click', openWhatsAppModal);
+    });
+
+    modalClose?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
+    modalCancel?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
+
+    whatsappSend?.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.open(`https://wa.link/buv7ho`, '_blank');
+    });
+
+    // =============================
+    // SMOOTH SCROLL
+    // =============================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            const targetElement = document.querySelector(this.getAttribute('href'));
+
+            if (!targetElement) return;
+
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+
+            sidebar?.classList.remove('active');
+        });
+    });
+
+    // =============================
+    // PARALLAX
+    // =============================
+    window.addEventListener('scroll', function () {
+
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.gradient-bg, .constellation, .shape');
+
+        parallaxElements.forEach(function (el, index) {
+            const speed = 0.5 * (index + 1) / 10;
+            el.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+
+    // =============================
+    // LOADING TEXT
+    // =============================
+    const loadingText = document.querySelector('.loading-text');
+
+    if (loadingText) {
+        const originalText = loadingText.textContent;
+        let dots = 0;
+
+        setInterval(function () {
+            dots = (dots + 1) % 4;
+            loadingText.textContent = originalText + '.'.repeat(dots);
+        }, 500);
+    }
+
+});
