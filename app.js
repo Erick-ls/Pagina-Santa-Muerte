@@ -189,26 +189,34 @@ document.addEventListener('DOMContentLoaded', function () {
     // =============================
     // WHATSAPP MODAL
     // =============================
-    function openWhatsAppModal(e) {
-        if (e) e.preventDefault();
-        whatsappModal?.classList.add('active');
-    }
+        function openWhatsAppModal(e) {
+            if (e) e.preventDefault();
+            whatsappModal?.classList.add('active');
+        }
 
-    whatsappFloat?.addEventListener('click', openWhatsAppModal);
-    amarresWhatsappBtn?.addEventListener('click', openWhatsAppModal);
+        whatsappFloat?.addEventListener('click', openWhatsAppModal);
+        amarresWhatsappBtn?.addEventListener('click', openWhatsAppModal);
 
-    whatsappServiceBtns.forEach(btn => {
-        btn.addEventListener('click', openWhatsAppModal);
-    });
+        whatsappServiceBtns.forEach(btn => {
+            btn.addEventListener('click', openWhatsAppModal);
+        });
 
-    modalClose?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
-    modalCancel?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
+        modalClose?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
+        modalCancel?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
 
-    whatsappSend?.addEventListener('click', function (e) {
-        e.preventDefault();
-        window.open(`https://wa.link/buv7ho`, '_blank');
-    });
+        whatsappSend?.addEventListener('click', function (e) {
+            e.preventDefault();
 
+            const phoneNumber = "13233205256";
+
+            const message = encodeURIComponent(
+                "Hola Maestro, estoy interesado en sus trabajos, me regalas mas información gracias."
+            );
+
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+            window.open(whatsappUrl, '_blank');
+        });
     // =============================
     // SMOOTH SCROLL
     // =============================
