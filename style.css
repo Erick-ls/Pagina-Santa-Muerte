@@ -156,6 +156,7 @@ h4 {
     align-items: center;
     z-index: 9999;
     transition: opacity 0.5s ease-out;
+    padding: 1rem;
 }
 
 .loader-container.hidden {
@@ -222,13 +223,14 @@ h4 {
 .sidebar {
     position: fixed;
     top: 0;
-    left: -250px;
-    width: 250px;
+    left: -280px;
+    width: 280px;
     height: 100%;
-    background: rgba(26, 26, 26, 0.95);
+    background: rgba(26, 26, 26, 0.98);
     z-index: 1000;
     transition: var(--transition);
     border-right: 1px solid var(--color-accent);
+    overflow-y: auto;
 }
 
 .sidebar.active {
@@ -251,6 +253,7 @@ h4 {
     align-items: center;
     cursor: pointer;
     transition: var(--transition);
+    touch-action: manipulation;
 }
 
 .sidebar-toggle:hover {
@@ -275,6 +278,7 @@ h4 {
     display: flex;
     align-items: center;
     transition: var(--transition);
+    padding: 0.5rem 0;
 }
 
 .sidebar-menu a:hover {
@@ -292,13 +296,14 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(26, 26, 26, 0.9);
+    background-color: rgba(26, 26, 26, 0.95);
     z-index: 900;
     border-bottom: 1px solid var(--color-accent);
+    min-height: 70px;
 }
 
 .logo {
@@ -349,13 +354,13 @@ header {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     position: relative;
     overflow: hidden;
 }
@@ -373,7 +378,9 @@ header {
 .hero-content {
     max-width: 800px;
     z-index: 1;
-    margin-top: 161px;
+    margin-top: 80px;
+    width: 100%;
+    padding: 0 1rem;
 }
 
 .hero h1 {
@@ -381,6 +388,7 @@ header {
     margin-bottom: 1.5rem;
     text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
     animation: titleGlow 3s infinite alternate;
+    line-height: 1.2;
 }
 
 @keyframes titleGlow {
@@ -413,6 +421,7 @@ header {
     box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
     font-family: 'Cinzel', serif;
     letter-spacing: 1px;
+    touch-action: manipulation;
 }
 
 .btn:hover {
@@ -438,6 +447,7 @@ header {
     top: 50%;
     transform: translateY(-50%);
     z-index: 100;
+    touch-action: manipulation;
 }
 
 .carousel-btn:hover {
@@ -455,7 +465,7 @@ header {
 
 /* Secciones generales */
 section {
-    padding: 6rem 2rem;
+    padding: 5rem 1.5rem;
 }
 
 .section-title {
@@ -463,6 +473,7 @@ section {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     position: relative;
+    line-height: 1.2;
 }
 
 .section-title::after {
@@ -485,7 +496,6 @@ section {
 .video-carousel {
     position: relative;
     max-width: 600px;
-    /* más angosto */
     margin: 0 auto;
     overflow: hidden;
 }
@@ -506,7 +516,6 @@ section {
     width: 100%;
     height: 0;
     padding-bottom: 177.77%;
-    /* 9:16 */
     overflow: hidden;
     border-radius: 14px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
@@ -529,13 +538,14 @@ section {
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid gold;
     color: gold;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 16px;
     transition: 0.3s ease;
     z-index: 10;
+    touch-action: manipulation;
 }
 
 .mute-btn:hover {
@@ -565,14 +575,14 @@ section {
 
 .masonry-grid {
     columns: 3;
-    column-gap: 1.5rem;
+    column-gap: 1.2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .gallery-item {
     break-inside: avoid;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     position: relative;
     overflow: hidden;
     border-radius: 8px;
@@ -582,6 +592,7 @@ section {
 
 .gallery-item img {
     width: 100%;
+    height: auto;
     display: block;
     transition: var(--transition);
 }
@@ -667,7 +678,8 @@ section {
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.2rem;
     margin-top: 2rem;
 }
 
@@ -683,6 +695,7 @@ section {
     font-size: 1.5rem;
     transition: var(--transition);
     border: 1px solid var(--color-accent);
+    touch-action: manipulation;
 }
 
 .social-icon:hover {
@@ -713,6 +726,7 @@ section {
     z-index: 900;
     transition: var(--transition);
     animation: pulse 2s infinite;
+    touch-action: manipulation;
 }
 
 .whatsapp-float:hover {
@@ -727,7 +741,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -735,6 +749,7 @@ section {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+    padding: 1rem;
 }
 
 .whatsapp-modal.active {
@@ -747,21 +762,26 @@ section {
     border: 1px solid var(--color-accent);
     border-radius: 10px;
     padding: 2rem;
-    width: 90%;
+    width: 100%;
     max-width: 500px;
     text-align: center;
     position: relative;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal-close {
     position: absolute;
     top: 15px;
     right: 15px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
     color: var(--color-light);
     transition: var(--transition);
+    line-height: 1;
+    padding: 4px;
+    touch-action: manipulation;
 }
 
 .modal-close:hover {
@@ -775,6 +795,7 @@ section {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .modal-message {
@@ -799,6 +820,7 @@ section {
     justify-content: center;
     gap: 10px;
     transition: var(--transition);
+    touch-action: manipulation;
 }
 
 .btn-whatsapp:hover {
@@ -814,6 +836,7 @@ section {
     border-radius: 5px;
     cursor: pointer;
     transition: var(--transition);
+    touch-action: manipulation;
 }
 
 .btn-cancel:hover {
@@ -824,7 +847,7 @@ section {
 /* Footer */
 footer {
     background: linear-gradient(145deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.9));
-    padding: 3rem 2rem;
+    padding: 3rem 1.5rem;
     text-align: center;
     border-top: 2px solid var(--color-accent);
     position: relative;
@@ -872,18 +895,19 @@ footer::before {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1.2rem;
     margin-bottom: 2rem;
 }
 
 .footer-links a {
     color: var(--color-light);
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: var(--transition);
     padding: 0.5rem 1rem;
     border: 1px solid transparent;
     border-radius: 5px;
+    touch-action: manipulation;
 }
 
 .footer-links a:hover {
@@ -906,7 +930,8 @@ footer::before {
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.2rem;
     margin-bottom: 2rem;
 }
 
@@ -922,6 +947,7 @@ footer::before {
     transition: var(--transition);
     border: 2px solid var(--color-accent);
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    touch-action: manipulation;
 }
 
 .social-links a:hover {
@@ -938,7 +964,7 @@ footer::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.95);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -946,6 +972,7 @@ footer::before {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+    padding: 1rem;
 }
 
 .lightbox.active {
@@ -955,8 +982,11 @@ footer::before {
 
 .lightbox-content {
     position: relative;
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 95%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .lightbox-close {
@@ -966,6 +996,8 @@ footer::before {
     color: white;
     font-size: 2rem;
     cursor: pointer;
+    padding: 6px;
+    touch-action: manipulation;
 }
 
 .lightbox-content img {
@@ -973,6 +1005,7 @@ footer::before {
     max-height: 80vh;
     border-radius: 8px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
 }
 
 .lightbox-caption {
@@ -984,12 +1017,13 @@ footer::before {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     text-align: center;
+    border-radius: 0 0 8px 8px;
 }
 
 /* Sección de Testimonios */
 .testimonials-section {
     background-color: rgba(15, 15, 15, 0.8);
-    padding: 6rem 2rem;
+    padding: 5rem 1.5rem;
 }
 
 .testimonials-container {
@@ -1021,7 +1055,6 @@ footer::before {
 .testimonial-image {
     width: 100%;
     height: auto;
-    /* Allow image to determine height */
     overflow: hidden;
     border-radius: 8px;
     margin-bottom: 1.5rem;
@@ -1076,7 +1109,6 @@ footer::before {
     font-style: italic;
     line-height: 1.8;
     flex-grow: 1;
-    /* Allow content to fill available space */
     margin-bottom: 1.5rem;
     position: relative;
     font-size: 1rem;
@@ -1109,7 +1141,7 @@ footer::before {
 /* Sección de Amarres */
 .amarres-section {
     background-color: rgba(10, 10, 10, 0.9);
-    padding: 6rem 2rem;
+    padding: 5rem 1.5rem;
     text-align: center;
 }
 
@@ -1140,77 +1172,13 @@ footer::before {
     font-weight: bold;
     transition: var(--transition);
     margin-top: 1rem;
+    touch-action: manipulation;
 }
 
 .whatsapp-btn-large:hover {
     background-color: #128C7E;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .masonry-grid {
-        columns: 2;
-    }
-
-    .nav-menu {
-        display: none;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .testimonials-container {
-        grid-template-columns: 1fr;
-    }
-
-    .testimonial-header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .testimonial-avatar {
-        margin-right: 0;
-        margin-bottom: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .masonry-grid {
-        columns: 1;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .footer-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .amarres-content {
-        padding: 2rem 1.5rem;
-    }
-
-    .testimonial-card {
-        padding: 1rem;
-    }
-
-    .testimonial-image img {
-        max-height: 200px;
-        /* Limit image height on small screens */
-    }
 }
 
 .textoWhatsapp {
@@ -1222,17 +1190,447 @@ footer::before {
     margin-top: 40px;
 }
 
-.descripcion1 {
-    font-size: large;
-}
-
-
-.descripcion2 {
-    font-size: large;
-}
-
+.descripcion1,
+.descripcion2,
 .descripcion3 {
     font-size: large;
 }
 
 
+/* ============================================================
+   RESPONSIVE — TABLETS (max-width: 1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .masonry-grid {
+        columns: 2;
+        column-gap: 1rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .testimonials-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .footer-logo {
+        font-size: 2rem;
+    }
+
+    .footer-quote {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MÓVILES GRANDES (max-width: 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+    /* Header */
+    header {
+        padding: 0.8rem 1rem;
+        min-height: 60px;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        margin-left: 50px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 1.5rem 1rem;
+        min-height: 100svh;
+    }
+
+    .hero-content {
+        margin-top: 70px;
+        padding: 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Secciones */
+    section {
+        padding: 4rem 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+        padding: 0 0.5rem;
+    }
+
+    /* Videos */
+    .videos-section {
+        padding: 3rem 0.8rem;
+    }
+
+    .video-carousel {
+        max-width: 100%;
+    }
+
+    /* Galería — 2 columnas en tablet */
+    .masonry-grid {
+        columns: 2;
+        column-gap: 0.8rem;
+    }
+
+    .gallery-item {
+        margin-bottom: 0.8rem;
+    }
+
+    /* Galería: mostrar caption siempre en móvil */
+    .gallery-caption {
+        opacity: 1;
+        font-size: 0.85rem;
+        padding: 0.7rem;
+    }
+
+    /* Servicios — 1 columna */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .service-img {
+        height: 220px;
+    }
+
+    /* Testimonios — 1 columna */
+    .testimonials-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .testimonial-card {
+        padding: 1.2rem;
+        height: auto;
+    }
+
+    .testimonial-header {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+    }
+
+    /* Amarres */
+    .amarres-section {
+        padding: 4rem 1rem;
+    }
+
+    .amarres-content {
+        padding: 2rem 1.2rem;
+        border-radius: 8px;
+    }
+
+    .amarres-content p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .whatsapp-btn-large {
+        font-size: 1.1rem;
+        padding: 0.9rem 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2.5rem 1rem;
+    }
+
+    .footer-logo {
+        font-size: 1.8rem;
+    }
+
+    .footer-links {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .footer-links a {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .footer-quote {
+        font-size: 1rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        padding: 1.5rem 1rem;
+    }
+
+    /* Sidebar más amplio en móvil */
+    .sidebar {
+        width: 260px;
+        left: -260px;
+    }
+
+    /* Texto descriptivo */
+    .textoWhatsapp,
+    .textoWhatsapp2 {
+        font-size: 16px;
+    }
+
+    .textoWhatsapp2 {
+        margin-top: 25px;
+    }
+
+    .descripcion1,
+    .descripcion2,
+    .descripcion3 {
+        font-size: 1rem;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MÓVILES PEQUEÑOS (max-width: 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+
+    /* Header */
+    header {
+        padding: 0.7rem 0.8rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    /* Secciones */
+    section {
+        padding: 3rem 0.8rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    /* Galería — 1 columna en móvil muy pequeño */
+    .masonry-grid {
+        columns: 1;
+        column-gap: 0;
+    }
+
+    .gallery-item {
+        margin-bottom: 1rem;
+    }
+
+    /* Imágenes de galería visibles completas */
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* Servicios */
+    .service-img {
+        height: 180px;
+    }
+
+    .service-content {
+        padding: 1rem;
+    }
+
+    .service-content h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Testimonios */
+    .testimonials-section {
+        padding: 3rem 0.8rem;
+    }
+
+    .testimonial-card {
+        padding: 1rem;
+    }
+
+    .testimonial-image img {
+        max-height: 250px;
+        object-fit: cover;
+    }
+
+    .testimonial-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .testimonial-avatar {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .testimonial-author {
+        font-size: 1rem;
+    }
+
+    .testimonial-content {
+        font-size: 0.95rem;
+    }
+
+    /* Amarres */
+    .amarres-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .amarres-content p {
+        font-size: 1rem;
+    }
+
+    .whatsapp-btn-large {
+        font-size: 1rem;
+        padding: 0.8rem 1.2rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Footer */
+    .footer-logo {
+        font-size: 1.5rem;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    .footer-quote {
+        font-size: 0.95rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        padding: 1.2rem 0.9rem;
+    }
+
+    /* WhatsApp float más pequeño */
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+        bottom: 18px;
+        right: 18px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 240px;
+        left: -240px;
+    }
+
+    /* Lightbox */
+    .lightbox-content {
+        max-width: 100%;
+    }
+
+    .lightbox-content img {
+        max-height: 75vh;
+    }
+
+    /* Loader */
+    .loading-text {
+        font-size: 1.3rem;
+    }
+
+    .progress-container {
+        width: 200px;
+    }
+
+    /* Carousel buttons */
+    .carousel-btn {
+        width: 34px;
+        height: 34px;
+    }
+
+    #prev-btn {
+        left: 5px;
+    }
+
+    #next-btn {
+        right: 5px;
+    }
+
+    /* Textos WhatsApp */
+    .textoWhatsapp,
+    .textoWhatsapp2 {
+        font-size: 14px;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MÓVILES MUY PEQUEÑOS (max-width: 360px)
+   ============================================================ */
+@media (max-width: 360px) {
+    .hero h1 {
+        font-size: 1.4rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .amarres-content {
+        padding: 1.2rem 0.8rem;
+    }
+
+    .footer-logo {
+        font-size: 1.3rem;
+    }
+}
