@@ -239,26 +239,80 @@ h4 {
 
 .sidebar-toggle {
     position: fixed;
-    top: 33px;
+    top: 28px;
     left: 14px;
     z-index: 1001;
-    background: rgba(26, 26, 26, 0.8);
-    border: 1px solid var(--color-accent);
+    background: transparent;
+    border: none;
     color: var(--color-accent);
-    width: 38px;
+    width: 36px;
     height: 36px;
-    border-radius: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
     cursor: pointer;
-    transition: var(--transition);
+    padding: 4px;
     touch-action: manipulation;
+    transition: gap 0.3s ease, transform 0.3s ease;
+}
+
+/* Las 3 barras generadas con pseudo-elementos y un span */
+.sidebar-toggle::before,
+.sidebar-toggle::after,
+.sidebar-toggle span {
+    content: '';
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+    transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    transform-origin: center;
+}
+
+/* Barra del medio más corta para dar elegancia */
+.sidebar-toggle span {
+    width: 18px;
+    align-self: flex-start;
+    margin-left: 0;
+}
+
+/* Hover: las barras se igualan, cambian de color y la del medio se desplaza */
+.sidebar-toggle:hover::before,
+.sidebar-toggle:hover::after {
+    background-color: #f0c040;
+    width: 26px;
+}
+
+.sidebar-toggle:hover span {
+    background-color: #f0c040;
+    width: 26px;
+    transform: translateX(0);
+    opacity: 0.7;
 }
 
 .sidebar-toggle:hover {
-    background: var(--color-accent);
-    color: var(--color-dark);
+    gap: 6px;
+}
+
+/* Estado activo (cuando el sidebar está abierto): se convierte en X */
+.sidebar-toggle.active::before {
+    transform: translateY(7px) rotate(45deg);
+    background-color: var(--color-accent);
+    width: 26px;
+}
+
+.sidebar-toggle.active span {
+    opacity: 0;
+    width: 0;
+}
+
+.sidebar-toggle.active::after {
+    transform: translateY(-7px) rotate(-45deg);
+    background-color: var(--color-accent);
+    width: 26px;
 }
 
 .sidebar-menu {
@@ -1058,6 +1112,8 @@ footer::before {
     overflow: hidden;
     border-radius: 8px;
     margin-bottom: 1.5rem;
+    cursor: pointer;
+    position: relative;
 }
 
 .testimonial-image img {
@@ -1066,6 +1122,28 @@ footer::before {
     object-fit: cover;
     transition: var(--transition);
     display: block;
+}
+
+.testimonial-image::after {
+    content: '\f00e';
+    /* fa-search-plus */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: var(--color-accent);
+    font-size: 2rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.testimonial-image:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .testimonial-card:hover .testimonial-image img {

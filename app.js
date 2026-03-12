@@ -31,13 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalVideos = document.querySelectorAll('.video-item').length;
     let activeVideo = null;
 
-    // Activar listener del video actual
     function activateVideoListener() {
-
         const videos = document.querySelectorAll('.video-wrapper video');
         if (videos.length === 0) return;
 
-        // Remover eventos anteriores
         videos.forEach(video => {
             video.removeEventListener('timeupdate', handleVideoTime);
         });
@@ -48,20 +45,15 @@ document.addEventListener('DOMContentLoaded', function () {
         activeVideo.addEventListener('timeupdate', handleVideoTime);
     }
 
-    // Cuando el video llegue a 60 segundos
     function handleVideoTime() {
-
         if (this.currentTime >= 60) {
-
             this.currentTime = 0;
-
             currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
             updateCarousel();
         }
     }
 
     function updateCarousel() {
-
         if (!videoCarousel || totalVideos === 0) return;
 
         videoCarousel.style.transform = `translateX(-${currentVideoIndex * 100}%)`;
@@ -69,8 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const videos = document.querySelectorAll('.video-wrapper video');
 
         videos.forEach((video, index) => {
-
-            // Reset sonido
             video.muted = true;
 
             const btn = video.closest('.video-wrapper')?.querySelector('.mute-btn');
@@ -88,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (prevBtn && nextBtn && totalVideos > 0) {
-
         prevBtn.addEventListener('click', function () {
             currentVideoIndex = (currentVideoIndex - 1 + totalVideos) % totalVideos;
             updateCarousel();
@@ -99,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
             updateCarousel();
         });
 
-        // Inicializar primer video
         updateCarousel();
     }
 
@@ -108,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // =============================
     document.querySelectorAll('.mute-btn').forEach(button => {
         button.addEventListener('click', function () {
-
             const video = this.closest('.video-wrapper')?.querySelector('video');
             if (!video) return;
 
@@ -125,10 +112,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // =============================
     if (loader && progress && mainContent) {
         setTimeout(function () {
-
             let width = 0;
             const interval = setInterval(function () {
-
                 if (width >= 100) {
                     clearInterval(interval);
                     loader.classList.add('hidden');
@@ -137,19 +122,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     width += 5;
                     progress.style.width = width + '%';
                 }
-
             }, 50);
-
         }, 950);
     }
 
     // =============================
-    // SIDEBAR
+    // SIDEBAR — con animación de X
     // =============================
     if (sidebarToggle && sidebar) {
 
         sidebarToggle.addEventListener('click', function () {
             sidebar.classList.toggle('active');
+            sidebarToggle.classList.toggle('active');
         });
 
         document.addEventListener('click', function (event) {
@@ -158,18 +142,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 sidebar.classList.contains('active')) {
 
                 sidebar.classList.remove('active');
+                sidebarToggle.classList.remove('active');
             }
         });
     }
 
     // =============================
-    // LIGHTBOX
+    // LIGHTBOX — galería + testimonios
     // =============================
-    if (galleryItems.length > 0 && lightbox) {
+    if (lightbox) {
 
+        // --- Galería ---
         galleryItems.forEach(function (item) {
             item.addEventListener('click', function () {
-
                 const img = this.querySelector('img');
                 const caption = this.querySelector('.gallery-caption');
 
@@ -181,48 +166,76 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+        // --- Testimonios ---
+        const testimonialImages = document.querySelectorAll('.testimonial-image');
+
+        testimonialImages.forEach(function (item) {
+            item.addEventListener('click', function () {
+                const img = this.querySelector('img');
+                const author = this.closest('.testimonial-card')
+                    ?.querySelector('.testimonial-author')
+                    ?.textContent || '';
+
+                if (!img) return;
+
+                lightboxImage.src = img.src;
+                lightboxCaption.innerHTML = author
+                    ? `<strong>${author}</strong>`
+                    : '';
+                lightbox.classList.add('active');
+            });
+        });
+
+        // --- Cerrar con botón X ---
         lightboxClose?.addEventListener('click', function () {
             lightbox.classList.remove('active');
         });
-    }
+
+        // --- Cerrar al hacer clic fuera de la imagen ---
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+    } // fin if (lightbox)
 
     // =============================
     // WHATSAPP MODAL
     // =============================
-        function openWhatsAppModal(e) {
-            if (e) e.preventDefault();
-            whatsappModal?.classList.add('active');
-        }
+    function openWhatsAppModal(e) {
+        if (e) e.preventDefault();
+        whatsappModal?.classList.add('active');
+    }
 
-        whatsappFloat?.addEventListener('click', openWhatsAppModal);
-        amarresWhatsappBtn?.addEventListener('click', openWhatsAppModal);
+    whatsappFloat?.addEventListener('click', openWhatsAppModal);
+    amarresWhatsappBtn?.addEventListener('click', openWhatsAppModal);
 
-        whatsappServiceBtns.forEach(btn => {
-            btn.addEventListener('click', openWhatsAppModal);
-        });
+    whatsappServiceBtns.forEach(btn => {
+        btn.addEventListener('click', openWhatsAppModal);
+    });
 
-        modalClose?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
-        modalCancel?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
+    modalClose?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
+    modalCancel?.addEventListener('click', () => whatsappModal?.classList.remove('active'));
 
-        whatsappSend?.addEventListener('click', function (e) {
-            e.preventDefault();
+    whatsappSend?.addEventListener('click', function (e) {
+        e.preventDefault();
 
-            const phoneNumber = "13233205256";
+        const phoneNumber = "13233205256";
 
-            const message = encodeURIComponent(
-                "Hola Maestro, estoy interesado en sus trabajos, me regalas mas información gracias."
-            );
+        const message = encodeURIComponent(
+            "Hola Maestro, estoy interesado en sus trabajos, me regalas mas información gracias."
+        );
 
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+    });
 
-            window.open(whatsappUrl, '_blank');
-        });
     // =============================
     // SMOOTH SCROLL
     // =============================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-
             e.preventDefault();
             const targetElement = document.querySelector(this.getAttribute('href'));
 
@@ -234,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             sidebar?.classList.remove('active');
+            sidebarToggle?.classList.remove('active');
         });
     });
 
@@ -241,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // PARALLAX
     // =============================
     window.addEventListener('scroll', function () {
-
         const scrolled = window.pageYOffset;
         const parallaxElements = document.querySelectorAll('.gradient-bg, .constellation, .shape');
 

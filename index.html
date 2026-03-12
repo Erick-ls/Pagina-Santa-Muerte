@@ -45,9 +45,9 @@
 
     <!-- Menú lateral -->
     <div class="sidebar">
-        <div class="sidebar-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
+        <button class="sidebar-toggle" id="sidebar-toggle">
+            <span></span>
+        </button>
         <ul class="sidebar-menu">
             <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
             <li><a href="#videos"><i class="fas fa-play-circle"></i> Videos</a></li>
@@ -89,73 +89,78 @@
             </div>
         </section>
 
-        <!-- Sección de Videos -->
+<!-- Sección de Videos -->
         <section id="videos" class="videos-section">
             <h2 class="section-title">Videos de Devoción</h2>
             <div class="video-carousel">
+
+                <!-- Contenedor deslizable -->
                 <div class="video-container" id="video-carousel">
 
-                    <!-- VIDEO 1: Reemplaza la URL con tu video -->
-
+                    <!-- VIDEO 1 -->
                     <div class="video-item">
                         <div class="video-wrapper">
                             <video autoplay loop muted playsinline poster="ruta/a/tu/imagen-de-portada2.jpg">
                                 <source src="./videos/WhatsApp Video 2026-03-10 at 4.04.14 PM.mp4" type="video/mp4">
                                 Tu navegador no soporta el elemento de video.
                             </video>
-                    
-                            <!-- Botón Mute / Unmute -->
                             <button class="mute-btn">
                                 <i class="fas fa-volume-mute"></i>
                             </button>
-                    
                         </div>
-                    
                         <div class="video-caption">
                             <h3>Oración de Protección</h3>
                             <p>Rezo poderoso para buscar amparo espiritual</p>
                         </div>
                     </div>
 
-                    <!-- VIDEO 2: Reemplaza la URL con tu video -->
-                <div class="video-item">
-                    <div class="video-wrapper">
-                        <video autoplay loop muted playsinline poster="./images/IMG-20250825-WA0009.jpg">
-                            <source src="./videos/VID-20250825-WA0003.mp4" type="video/mp4">
-                            Tu navegador no soporta el elemento de video.
-                        </video>
-                    </div>
-                    <div class="video-caption">
-                        <h3>Altar Sagrado</h3>
-                        <p>Preparación de espacio devocional para la Santa Muerte</p>
-                    </div>
-                </div>
-                </div>
-                <div class="carousel-controls">
-                    <button class="carousel-btn" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-btn" id="next-btn"><i class="fas fa-chevron-right"></i></button>
-                </div>
-                </div>
-
-                    <!-- VIDEO 3: Reemplaza la URL con tu video -->
+                    <!-- VIDEO 2 -->
                     <div class="video-item">
                         <div class="video-wrapper">
                             <video autoplay loop muted playsinline poster="./images/IMG-20250825-WA0009.jpg">
-                                <source src="./videos/VID-20250825-WA0002.mp4" type="video/mp4">
+                                <source src="./videos/VID-20250825-WA0003.mp4" type="video/mp4">
                                 Tu navegador no soporta el elemento de video.
                             </video>
+                            <button class="mute-btn">
+                                <i class="fas fa-volume-mute"></i>
+                            </button>
                         </div>
                         <div class="video-caption">
                             <h3>Altar Sagrado</h3>
                             <p>Preparación de espacio devocional para la Santa Muerte</p>
                         </div>
                     </div>
-                </div>
+
+                    <!-- VIDEO 3 -->
+                    <div class="video-item">
+                        <div class="video-wrapper">
+                            <video autoplay loop muted playsinline poster="./images/IMG-20250825-WA0009.jpg">
+                                <source src="./videos/VID-20250825-WA0004.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                            <button class="mute-btn">
+                                <i class="fas fa-volume-mute"></i>
+                            </button>
+                        </div>
+                        <div class="video-caption">
+                            <h3>Ritual de Ofrenda</h3>
+                            <p>Ceremonia de devoción a la Santa Muerte</p>
+                        </div>
+                    </div>
+
+                </div><!-- fin #video-carousel -->
+
+                <!-- Controles del carrusel — solo uno -->
                 <div class="carousel-controls">
-                    <button class="carousel-btn" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-btn" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+                    <button class="carousel-btn" id="prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn" id="next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
-            </div>
+
+            </div><!-- fin .video-carousel -->
         </section>
 
         <!-- Galería Principal -->
